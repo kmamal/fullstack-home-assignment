@@ -1,0 +1,28 @@
+
+body {
+}
+
+.place {
+	display: flex;
+	flex-direction: row;
+	gap: 20px;
+	padding: 20px;
+	width: fit-content;
+
+	background: gray;
+	color: gray;
+}
+
+.place .page {
+	padding: 10px;
+
+	background: white;
+}
+
+.place .schedule {
+	display: grid;
+	grid-template-columns: auto auto;
+	column-gap: 20px;
+	row-gap: 10px;
+	align-items: start;
+}

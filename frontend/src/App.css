@@ -26,3 +26,11 @@ body {
 	row-gap: 10px;
 	align-items: start;
 }
+
+.place .is-open {
+	color: green
+}
+
+.place .is-closed {
+	color: red
+}

@@ -36,27 +36,7 @@ app.get('/place/:id', async (req, res) => {
 			opening_hours: openingHours,
 		} = data
 
-		const daysWithHours = []
-		for (const day of DAYS) {
-			const ranges = openingHours.days[day]
-			if (!ranges) {
-				daysWithHours.push({ day })
-				continue
-			}
-
-			ranges.sort((a, b) => a.start < b.start ? -1 : 1)
-			const hours = ranges.map(({ start, end}) => `${start}-${end}`).join(',')
-
-			const prev = daysWithHours.at(-1)
-			if (prev && hours === prev.hours) {
-				prev.until = day
-				continue
-			}
-
-			daysWithHours.push({ day, hours })
-		}
-
-		return res.status(200).send({ name, location, hours: daysWithHours })
+		return res.status(200).send({ name, location, hours: openingHours.days })
 	} catch (error) {
 		console.log(error)
 		return res.sendStatus(503)
